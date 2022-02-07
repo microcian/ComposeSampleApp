@@ -8,7 +8,7 @@ import com.techvista.etisalat.domain.model.Photos
 
 @Dao
 interface PhotosDao {
-    @Query("SELECT * FROM photos ORDER BY id DESC")
+    @Query("SELECT * FROM photos")
     suspend fun getPhotos(): List<Photos>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
