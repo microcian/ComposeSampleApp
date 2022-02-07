@@ -4,9 +4,9 @@ import com.techvista.etisalat.commom.AppDataFactory
 import com.techvista.etisalat.domain.model.Photos
 import com.techvista.etisalat.domain.repository.PhotosRepository
 
-class PhotosDataRepository (
+class PhotosDataRepository(
     private val factory: AppDataFactory
-): PhotosRepository {
+) : PhotosRepository {
 
     private fun getDataSource(): PhotosRepository {
         return factory.getRepository()

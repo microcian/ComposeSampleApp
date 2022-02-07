@@ -8,7 +8,7 @@ import com.techvista.etisalat.domain.model.Photos
     entities = [Photos::class],
     version = 1
 )
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
     abstract val photosDao: PhotosDao
 

@@ -15,13 +15,13 @@ class GetPhotosUseCase @Inject constructor(
 
     operator fun invoke(): Flow<Response<List<Photos>>> = flow {
         try {
-            emit(Response.Loading<List<Photos>>())
+            emit(Response.Loading())
             val photos = repository.getPhotos()
             emit(Response.Success(photos))
         } catch (e: HttpException) {
-            emit(Response.Error<List<Photos>>(e.localizedMessage))
+            emit(Response.Error(e.localizedMessage))
         } catch (e: IOException) {
-            emit(Response.Error<List<Photos>>("Could not reach server, Check internet connection"))
+            emit(Response.Error("Could not reach server, Check internet connection"))
         }
     }
 }

@@ -9,12 +9,14 @@ import javax.inject.Inject
 class PhotosRemoteRepositoryImpl @Inject constructor(
     private val api: RemoteApi,
     private val photosDao: PhotosDao
-): PhotosRepository {
+) : PhotosRepository {
 
     override suspend fun getPhotos(): List<Photos> {
-        insertPhotosToLocalDb(api.getPhotos())
-        return api.getPhotos()
+        val data = api.getPhotos()
+        insertPhotosToLocalDb(data)
+        return data
     }
+
     private suspend fun insertPhotosToLocalDb(listPhotos: List<Photos>) {
         photosDao.insertPhotos(listPhotos)
     }
